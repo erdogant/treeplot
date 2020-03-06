@@ -1,2 +1,1 @@
-include treeplot/data/*.zip
-include treeplot/data/*.txt
+include treeplot/RESOURCES/*.zip
