@@ -5,8 +5,10 @@ __pycache__/
 
 # C extensions
 *.so
+graphviz-2.38/
 
 # Distribution / packaging
+.pylint.*
 .Python
 build/
 develop-eggs/
@@ -127,3 +129,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+.pylint.*
