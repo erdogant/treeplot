@@ -42,6 +42,7 @@ import treeplot
 X,y = treeplot.import_example()
 
 # Learn model
+from sklearn.ensemble import RandomForestClassifier
 model = RandomForestClassifier(n_estimators=100, max_depth=2, random_state=0).fit(X, y)
 
 # Make plot
@@ -57,6 +58,7 @@ ax = treeplot.randomforest(model, export='pdf')
 X,y = treeplot.import_example()
 
 # Learn model
+from xgboost import XGBClassifier
 model = XGBClassifier(n_estimators=100, max_depth=2, random_state=0).fit(X, y)
 
 # Make plot
