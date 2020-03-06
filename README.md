@@ -40,8 +40,11 @@ import treeplot
 ```python
 # Load example dataset
 X,y = treeplot.import_example()
+model = RandomForestClassifier(n_estimators=100, max_depth=2, random_state=0).fit(X, y)
+
 # Learn model
 model = RandomForestClassifier(n_estimators=100, max_depth=2, random_state=0).fit(X, y)
+
 # Make plot
 ax = treeplot.plot(model)
 
@@ -53,8 +56,10 @@ ax = treeplot.randomforest(model, export='pdf')
 ```python
 # Load example dataset
 X,y = treeplot.import_example()
+
 # Learn model
 model = XGBClassifier(n_estimators=100, max_depth=2, random_state=0).fit(X, y)
+
 # Make plot
 ax = treeplot.plot(model)
 
