@@ -11,7 +11,6 @@
 import os
 import zipfile
 import numpy as np
-from xgboost import plot_tree, plot_importance
 from sklearn.tree import export_graphviz
 from sklearn.datasets import make_classification
 from subprocess import call
@@ -76,6 +75,11 @@ def xgboost(model, featnames=None, num_trees=0, plottype='horizontal', figsize=(
     None.
 
     """
+    try:
+        from xgboost import plot_tree, plot_importance
+    except:
+        raise ImportError('xgboost must be installed. Try to: <pip install xgboost>')
+
     if 'xgb' not in str(model).lower():
         raise ImportError('The models seems not to be a xgboost model?')
 
