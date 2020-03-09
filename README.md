@@ -6,7 +6,7 @@
 [![Downloads](https://pepy.tech/badge/treeplot/week)](https://pepy.tech/project/treeplot/week)
 [![Donate](https://img.shields.io/badge/donate-grey.svg)](https://erdogant.github.io/donate/?currency=USD&amount=5)
 
-* treeplot is Python package
+* treeplot is Python package to easily plot the tree derived from models such as decisiontrees, randomforest and xgboost.
 
 ### Contents
 - [Installation](#-installation)
@@ -40,15 +40,21 @@ import treeplot
 ```python
 # Load example dataset
 X,y = treeplot.import_example()
-
 # Learn model
 from sklearn.ensemble import RandomForestClassifier
 model = RandomForestClassifier(n_estimators=100, max_depth=2, random_state=0).fit(X, y)
+```
 
-# Make plot
+Make plot
+```python
 ax = treeplot.plot(model)
+```
+<p align="center">
+  <img src="https://github.com/erdogant/pca/blob/master/docs/figs/Figure_1.png" width="350" />
+</p>
 
-# or alternatively if you have more parameters to specify:
+If you have more parameters to specify:
+```python
 ax = treeplot.randomforest(model, export='pdf')
 ```
 
@@ -56,17 +62,27 @@ ax = treeplot.randomforest(model, export='pdf')
 ```python
 # Load example dataset
 X,y = treeplot.import_example()
-
 # Learn model
 from xgboost import XGBClassifier
 model = XGBClassifier(n_estimators=100, max_depth=2, random_state=0).fit(X, y)
+```
 
-# Make plot
+Make plot
+```python
 ax = treeplot.plot(model)
+```
+<p align="center">
+  <img src="https://github.com/erdogant/pca/blob/master/docs/figs/Figure2_xgboost_hor.png" width="350" />
+  <img src="https://github.com/erdogant/pca/blob/master/docs/figs/Figure2_featimportance.png" width="350" />
+</p>
 
-# or alternatively if you have more parameters to specify:
+If you have more parameters to specify:
+```python
 ax = treeplot.xgboost(model, plottype='vertical')
 ```
+<p align="center">
+  <img src="https://github.com/erdogant/pca/blob/master/docs/figs/Figure2_xgboost_ver.png" width="350" />
+</p>
 
 
 #### Maintainers
