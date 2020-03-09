@@ -153,18 +153,21 @@ def randomforest(model, featnames=None, num_trees=0, filepath='tree', export='pn
                                )
 
     # Save to pdf
-    if export=='pdf':
+    if export == 'pdf':
         s = Source.from_file(dotfile)
         s.view()
 
     # Save to png
-    if export=='png':
-        # Convert to png using system command (requires Graphviz)
-        call(['dot', '-Tpng', dotfile, '-o', pngfile, '-Gdpi=' + str(resolution)])
-        fig, ax = plt.subplots(1, 1, figsize=figsize)
-        img = mpimg.imread(pngfile)
-        plt.imshow(img)
-        plt.axis('off')
+    if export == 'png':
+        try:
+            call(['dot', '-Tpng', dotfile, '-o', pngfile, '-Gdpi=' + str(resolution)])
+            fig, ax = plt.subplots(1, 1, figsize=figsize)
+            img = mpimg.imread(pngfile)
+            plt.imshow(img)
+            plt.axis('off')
+        except:
+            if _get_platform() != "windows":
+                print('[TREEPLOT] Install graphviz first: <sudo apt install python-pydot python-pydot-ng graphviz>')
 
     return(ax)
 
@@ -191,6 +194,7 @@ def import_example(n_samples=1000, n_feat=10):
 
 # %% Get graphiz path and include into local PATH
 def _set_graphviz_path(gfile='graphviz-2.38.zip', verbose=3):
+    finPath=''
     if _get_platform()=="windows":
         curpath = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'RESOURCES')
         # filesindir = os.listdir(curpath)[0]
@@ -212,11 +216,10 @@ def _set_graphviz_path(gfile='graphviz-2.38.zip', verbose=3):
         finPath = os.path.abspath(os.path.join(getPath, 'release', 'bin'))
     else:
         pass
-        # pip install graphviz
-        # sudo apt-get update
-        # sudo apt-get install graphviz
-        # ON LINUX/MAC OS-X
-        # setenv GRAPHVIZ_DOT /usr/local/bin/graphviz/dot export GRAPHVIZ_DOT
+        # sudo apt install python-pydot python-pydot-ng graphviz
+        # dpkg -l | grep graphviz
+        # call(['dpkg', '-l', 'grep', 'graphviz'])
+        # call(['dpkg', '-s', 'graphviz'])
 
     # Add to system
     if finPath not in os.environ["PATH"]:
