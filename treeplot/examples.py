@@ -4,6 +4,14 @@ import treeplot
 # %% Make example dataset
 X,y = treeplot.import_example()
 
+
+# %% RF EXAMPLE
+from sklearn.tree import DecisionTreeClassifier
+model = DecisionTreeClassifier(max_depth=2, random_state=0).fit(X, y)
+
+ax = treeplot.randomforest(model)
+
+
 # %% RF EXAMPLE
 from sklearn.ensemble import RandomForestClassifier
 model_rf = RandomForestClassifier(n_estimators=100, max_depth=2, random_state=0).fit(X, y)

@@ -42,9 +42,10 @@ def plot(model, featnames=None, num_trees=0, figsize=(25,25), verbose=3):
     None.
 
     """
-    if 'forest' in str(model).lower():
+    modelname=str(model).lower()
+    if ('tree' in modelname) or ('forest' in modelname):
         ax=randomforest(model, featnames=featnames, num_trees=num_trees, figsize=figsize, verbose=verbose)
-    if 'xgb' in str(model).lower():
+    if ('xgb' in modelname):
         ax=xgboost(model, featnames=featnames, num_trees=num_trees, figsize=figsize, verbose=verbose)
 
     return(ax)
@@ -72,7 +73,7 @@ def xgboost(model, featnames=None, num_trees=0, plottype='horizontal', figsize=(
 
     Returns
     -------
-    None.
+    ax.
 
     """
     try:
@@ -80,8 +81,7 @@ def xgboost(model, featnames=None, num_trees=0, plottype='horizontal', figsize=(
     except:
         raise ImportError('xgboost must be installed. Try to: <pip install xgboost>')
 
-    if 'xgb' not in str(model).lower():
-        raise ImportError('The models seems not to be a xgboost model?')
+    _check_model(model, 'xgb')
 
     if plottype=='horizontal': plottype='UD'
     if plottype=='vertical': plottype='LR'
@@ -121,12 +121,11 @@ def randomforest(model, featnames=None, num_trees=0, filepath='tree', export='pn
 
     Returns
     -------
-    None.
+    ax.
 
     """
     ax=None
-    if 'forest' not in str(model).lower():
-        raise ImportError('The models seems not to be a randomforest model?')
+    _check_model(model, 'randomforest')
     # Set envirerement
     _set_graphviz_path()
     dotfile = filepath + '.dot'
@@ -216,3 +215,16 @@ def _set_graphviz_path(gfile='graphviz-2.38.zip', verbose=3):
         os.environ["PATH"] += os.pathsep + finPath
 
     return(finPath)
+
+
+# %% Check input model
+def _check_model(model, expected):
+    modelname = str(model).lower()
+    if (expected=='randomforest'):
+        if ('forest' in modelname) or ('tree' in modelname):
+            pass
+        else:
+            print('WARNING: The input model seems not to be a tree-based model?')
+    if (expected=='xgb'):
+        if ('xgb' not in modelname):
+            print('WARNING: The input model seems not to be a xgboost model?')
