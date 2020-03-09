@@ -45,16 +45,16 @@ from sklearn.ensemble import RandomForestClassifier
 model = RandomForestClassifier(n_estimators=100, max_depth=2, random_state=0).fit(X, y)
 ```
 
-Make plot
 ```python
+# Make plot
 ax = treeplot.plot(model)
 ```
 <p align="center">
   <img src="https://github.com/erdogant/treeplot/blob/master/docs/figs/Figure_1.png" width="550" />
 </p>
 
-If you have more parameters to specify:
 ```python
+# If you have more parameters to specify:
 ax = treeplot.randomforest(model, export='pdf')
 ```
 
@@ -67,8 +67,8 @@ from xgboost import XGBClassifier
 model = XGBClassifier(n_estimators=100, max_depth=2, random_state=0).fit(X, y)
 ```
 
-Make plot
 ```python
+# Make plot
 ax = treeplot.plot(model)
 ```
 <p align="center">
@@ -76,8 +76,8 @@ ax = treeplot.plot(model)
   <img src="https://github.com/erdogant/treeplot/blob/master/docs/figs/Figure2_featimportance.png" width="350" />
 </p>
 
-If you have more parameters to specify:
 ```python
+# If you have more parameters to specify:
 ax = treeplot.xgboost(model, plottype='vertical')
 ```
 <p align="center">
