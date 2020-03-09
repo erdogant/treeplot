@@ -7,22 +7,27 @@ from treeplot.treeplot import (
 
 __author__ = 'Erdogan Tasksen'
 __email__ = 'erdogant@gmail.com'
-__version__ = '0.1.4'
+__version__ = '0.1.5'
 
 # module level doc-string
 __doc__ = """
-treeplot vizualizes a tree based on a randomforest or xgboost model.
-=====================================================================
+treeplot
+==========================================
 
 Description
 -----------
-treeplot vizualizes a tree based on a randomforest or xgboost model.
+treeplot vizualizes a tree based on model.
 
 Example
 -------
 >>> import treeplot
 >>> X,y = treeplot.import_example()
+>>>
+>>> # randomforest model
 >>> model = RandomForestClassifier(n_estimators=100, max_depth=2, random_state=0).fit(X, y)
+>>> fig = treeplot.plot(model)
+>>>
+>>> # xgboost model
 >>> model = XGBClassifier(n_estimators=100, max_depth=2, random_state=0).fit(X, y)
 >>> fig = treeplot.plot(model)
 
