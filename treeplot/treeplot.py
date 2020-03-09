@@ -9,6 +9,7 @@
 
 # %% Libraries
 import os
+import sys
 import zipfile
 import numpy as np
 from sklearn.tree import export_graphviz
@@ -190,24 +191,32 @@ def import_example(n_samples=1000, n_feat=10):
 
 # %% Get graphiz path and include into local PATH
 def _set_graphviz_path(gfile='graphviz-2.38.zip', verbose=3):
-    curpath = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'RESOURCES')
-    # filesindir = os.listdir(curpath)[0]
-    idx = gfile[::-1].find('.') + 1
-    dirname = gfile[:-idx]
-    getPath = os.path.abspath(os.path.join(curpath, dirname))
-    getZip = os.path.abspath(os.path.join(curpath, gfile))
-    # Unzip if path does not exists
-    if not os.path.isdir(getPath):
-        if verbose>=3: print('[TREEPLOT] Extracting graphviz files..')
-        [pathname, _] = os.path.split(getZip)
-        # Unzip
-        zip_ref = zipfile.ZipFile(getZip, 'r')
-        zip_ref.extractall(pathname)
-        zip_ref.close()
-        getPath = os.path.join(pathname, dirname)
+    if _get_platform()=="windows":
+        curpath = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'RESOURCES')
+        # filesindir = os.listdir(curpath)[0]
+        idx = gfile[::-1].find('.') + 1
+        dirname = gfile[:-idx]
+        getPath = os.path.abspath(os.path.join(curpath, dirname))
+        getZip = os.path.abspath(os.path.join(curpath, gfile))
+        # Unzip if path does not exists
+        if not os.path.isdir(getPath):
+            if verbose>=3: print('[TREEPLOT] Extracting graphviz files..')
+            [pathname, _] = os.path.split(getZip)
+            # Unzip
+            zip_ref = zipfile.ZipFile(getZip, 'r')
+            zip_ref.extractall(pathname)
+            zip_ref.close()
+            getPath = os.path.join(pathname, dirname)
 
-    # Point directly to the bin
-    finPath = os.path.abspath(os.path.join(getPath, 'release', 'bin'))
+        # Point directly to the bin
+        finPath = os.path.abspath(os.path.join(getPath, 'release', 'bin'))
+    else:
+        pass
+        # pip install graphviz
+        # sudo apt-get update
+        # sudo apt-get install graphviz
+        # ON LINUX/MAC OS-X
+        # setenv GRAPHVIZ_DOT /usr/local/bin/graphviz/dot export GRAPHVIZ_DOT
 
     # Add to system
     if finPath not in os.environ["PATH"]:
@@ -215,6 +224,18 @@ def _set_graphviz_path(gfile='graphviz-2.38.zip', verbose=3):
         os.environ["PATH"] += os.pathsep + finPath
 
     return(finPath)
+
+
+def _get_platform():
+    platforms = {
+        'linux1':'linux',
+        'linux2':'linux',
+        'darwin':'osx',
+        'win32':'windows'
+    }
+    if sys.platform not in platforms:
+        return sys.platform
+    return platforms[sys.platform]
 
 
 # %% Check input model
