@@ -50,7 +50,7 @@ Make plot
 ax = treeplot.plot(model)
 ```
 <p align="center">
-  <img src="https://github.com/erdogant/treeplot/blob/master/docs/figs/Figure_1.png" width="350" />
+  <img src="https://github.com/erdogant/treeplot/blob/master/docs/figs/Figure_1.png" width="550" />
 </p>
 
 If you have more parameters to specify:
@@ -72,7 +72,7 @@ Make plot
 ax = treeplot.plot(model)
 ```
 <p align="center">
-  <img src="https://github.com/erdogant/treeplot/blob/master/docs/figs/Figure2_xgboost_hor.png" width="350" />
+  <img src="https://github.com/erdogant/treeplot/blob/master/docs/figs/Figure2_xgboost_hor.png" width="550" />
   <img src="https://github.com/erdogant/treeplot/blob/master/docs/figs/Figure2_featimportance.png" width="350" />
 </p>
 
@@ -81,7 +81,7 @@ If you have more parameters to specify:
 ax = treeplot.xgboost(model, plottype='vertical')
 ```
 <p align="center">
-  <img src="https://github.com/erdogant/treeplot/blob/master/docs/figs/Figure2_xgboost_ver.png" width="350" />
+  <img src="https://github.com/erdogant/treeplot/blob/master/docs/figs/Figure2_xgboost_ver.png" width="550" />
 </p>
 
 
