@@ -86,8 +86,13 @@ def xgboost(model, featnames=None, num_trees=0, plottype='horizontal', figsize=(
 
     if plottype=='horizontal': plottype='UD'
     if plottype=='vertical': plottype='LR'
-    fig, ax = plt.subplots(1, 1, figsize=figsize)
-    plot_tree(model, num_trees=num_trees, rankdir=plottype, ax=ax)
+
+    try:
+        fig, ax = plt.subplots(1, 1, figsize=figsize)
+        plot_tree(model, num_trees=num_trees, rankdir=plottype, ax=ax)
+    except:
+        if _get_platform() != "windows":
+            print('[TREEPLOT] Install graphviz first: <sudo apt install python-pydot python-pydot-ng graphviz>')
 
     # Plot importance
     plot_importance(model)
