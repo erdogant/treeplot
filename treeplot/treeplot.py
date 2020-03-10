@@ -172,6 +172,7 @@ def randomforest(model, featnames=None, num_trees=0, filepath='tree', export='pn
             img = mpimg.imread(pngfile)
             plt.imshow(img)
             plt.axis('off')
+            plt.show()
         except:
             if _get_platform() != "windows":
                 print('[TREEPLOT] Install graphviz first: <sudo apt install python-pydot python-pydot-ng graphviz>')
@@ -266,7 +267,7 @@ def _check_model(model, expected):
 
 
 # %% Import example dataset from github.
-def _download_graphviz(url='https://erdogant.github.io/datasets/graphviz-2.38.zip', verbose=3):
+def _download_graphviz(url, verbose=3):
     """Import example dataset from github.
 
     Parameters
@@ -292,5 +293,3 @@ def _download_graphviz(url='https://erdogant.github.io/datasets/graphviz-2.38.zi
         wget.download(url, curpath)
 
     return(gfile, curpath)
-
-
