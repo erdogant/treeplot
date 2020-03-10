@@ -1,8 +1,7 @@
 import treeplot
-print(treeplot.__version__)
 print(dir(treeplot))
+print(treeplot.__version__)
 
-# a,b=treeplot._download_graphviz()
 
 # %% Make example dataset
 X,y = treeplot.import_example()
