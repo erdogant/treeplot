@@ -18,6 +18,8 @@ from subprocess import call
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 from graphviz import Source
+import wget
+URL = 'https://erdogant.github.io/datasets/graphviz-2.38.zip'
 
 
 # %% Plot tree
@@ -198,10 +200,13 @@ def import_example(n_samples=1000, n_feat=10):
 
 
 # %% Get graphiz path and include into local PATH
-def _set_graphviz_path(gfile='graphviz-2.38.zip', verbose=3):
+def _set_graphviz_path(verbose=3):
     finPath=''
     if _get_platform()=="windows":
-        curpath = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'RESOURCES')
+        # Download from github
+        [gfile, curpath] = _download_graphviz(URL, verbose=verbose)
+
+        # curpath = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'RESOURCES')
         # filesindir = os.listdir(curpath)[0]
         idx = gfile[::-1].find('.') + 1
         dirname = gfile[:-idx]
@@ -234,6 +239,7 @@ def _set_graphviz_path(gfile='graphviz-2.38.zip', verbose=3):
     return(finPath)
 
 
+# %%
 def _get_platform():
     platforms = {
         'linux1':'linux',
@@ -257,3 +263,34 @@ def _check_model(model, expected):
     if (expected=='xgb'):
         if ('xgb' not in modelname):
             print('WARNING: The input model seems not to be a xgboost model?')
+
+
+# %% Import example dataset from github.
+def _download_graphviz(url='https://erdogant.github.io/datasets/graphviz-2.38.zip', verbose=3):
+    """Import example dataset from github.
+
+    Parameters
+    ----------
+    url : str, optional
+        url-Link to graphviz. The default is 'https://erdogant.github.io/datasets/graphviz-2.38.zip'.
+    verbose : int, optional
+        Print message to screen. The default is 3.
+
+    Returns
+    -------
+    None.
+
+    """
+    curpath = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'RESOURCES')
+    gfile = wget.filename_from_url(url)
+    PATH_TO_DATA = os.path.join(curpath, gfile)
+
+    # Check file exists.
+    if not os.path.isfile(PATH_TO_DATA):
+        # Download data from URL
+        if verbose>=3: print('[treeplot] Downloading graphviz..')
+        wget.download(url, curpath)
+
+    return(gfile, curpath)
+
+

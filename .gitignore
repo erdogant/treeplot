@@ -6,6 +6,7 @@ __pycache__/
 # C extensions
 *.so
 graphviz-2.38/
+*.zip
 
 # Distribution / packaging
 .pylint.*
