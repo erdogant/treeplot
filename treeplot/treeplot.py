@@ -13,7 +13,6 @@ import sys
 import zipfile
 import numpy as np
 from sklearn.tree import export_graphviz
-from sklearn.datasets import make_classification
 from subprocess import call
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
@@ -46,10 +45,12 @@ def plot(model, featnames=None, num_trees=0, figsize=(25,25), verbose=3):
 
     """
     modelname=str(model).lower()
-    if ('tree' in modelname) or ('forest' in modelname):
+    if ('tree' in modelname) or ('forest' in modelname) or ('gradientboosting' in modelname):
         ax=randomforest(model, featnames=featnames, num_trees=num_trees, figsize=figsize, verbose=verbose)
-    if ('xgb' in modelname):
+    elif ('xgb' in modelname):
         ax=xgboost(model, featnames=featnames, num_trees=num_trees, figsize=figsize, verbose=verbose)
+    else:
+        print('[treeplot] Model %s not recognized.' %(modelname))
 
     return(ax)
 
@@ -132,6 +133,7 @@ def randomforest(model, featnames=None, num_trees=0, filepath='tree', export='pn
     ax.
 
     """
+    modelname=str(model).lower()
     ax=None
     _check_model(model, 'randomforest')
     # Set envirerement
@@ -139,14 +141,17 @@ def randomforest(model, featnames=None, num_trees=0, filepath='tree', export='pn
     dotfile = filepath + '.dot'
     pngfile = filepath + '.png'
 
-    if isinstance(featnames, type(None)):
+    if featnames is None:
         featnames = np.arange(0,len(model.feature_importances_)).astype(str)
 
     # Get model parameters
-    if hasattr(model, 'estimators_'):
-        estimator = model.estimators_[num_trees]
+    if ('gradientboosting' in modelname):
+        estimator = model.estimators_[num_trees][0]
     else:
-        estimator = model
+        if hasattr(model, 'estimators_'):
+            estimator = model.estimators_[num_trees]
+        else:
+            estimator = model
 
     # Make dot file
     dot_data = export_graphviz(estimator,
@@ -180,12 +185,17 @@ def randomforest(model, featnames=None, num_trees=0, filepath='tree', export='pn
     return(ax)
 
 
-# %% Example data
-def import_example(n_samples=1000, n_feat=10):
-    """Import Example.
+# %% Import example dataset from github.
+def import_example(data='random', n_samples=1000, n_feat=10):
+    """Import example dataset from sklearn.
 
     Parameters
     ----------
+    data : str
+        'random' : str, two-class
+        'breast' : str, two-class
+        'titanic': str, two-class
+        'iris' : str, multi-class
     n_samples : int, optional
         Number of samples to generate. The default is 1000.
     n_feat : int, optional
@@ -193,11 +203,25 @@ def import_example(n_samples=1000, n_feat=10):
 
     Returns
     -------
-    None.
+    tuple containing dataset and response variable (X,y).
 
     """
-    [X, y] = make_classification(n_samples=n_samples, n_features=n_feat)
-    return(X,y)
+    try:
+        from sklearn import datasets
+    except:
+        print('This requires: <pip install sklearn>')
+        return None, None
+
+    if data=='iris':
+        X, y = datasets.load_iris(return_X_y=True)
+    elif data=='breast':
+        X, y = datasets.load_breast_cancer(return_X_y=True)
+    elif data=='titanic':
+        X, y = datasets.fetch_openml("titanic", version=1, as_frame=True, return_X_y=True)
+    elif data=='random':
+        X, y = datasets.make_classification(n_samples=n_samples, n_features=n_feat)
+
+    return X, y
 
 
 # %% Get graphiz path and include into local PATH
@@ -257,7 +281,7 @@ def _get_platform():
 def _check_model(model, expected):
     modelname = str(model).lower()
     if (expected=='randomforest'):
-        if ('forest' in modelname) or ('tree' in modelname):
+        if ('forest' in modelname) or ('tree' in modelname) or ('gradientboosting' in modelname):
             pass
         else:
             print('WARNING: The input model seems not to be a tree-based model?')
