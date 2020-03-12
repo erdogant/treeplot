@@ -4,7 +4,8 @@ print(treeplot.__version__)
 
 
 # %% Make example dataset
-X,y = treeplot.import_example('breast')
+from sklearn import tree
+X,y = treeplot.import_example('iris')
 
 
 # %% RF EXAMPLE
@@ -12,6 +13,7 @@ from sklearn.tree import DecisionTreeClassifier
 model_rf = DecisionTreeClassifier(max_depth=2, random_state=0).fit(X, y)
 
 ax = treeplot.randomforest(model_rf)
+tree.plot_tree(model_rf) 
 
 
 # %% RF EXAMPLE

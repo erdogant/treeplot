@@ -13,6 +13,7 @@ import sys
 import zipfile
 import numpy as np
 from sklearn.tree import export_graphviz
+from sklearn.tree.export import export_text
 from subprocess import call
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
@@ -133,19 +134,23 @@ def randomforest(model, featnames=None, num_trees=0, filepath='tree', export='pn
     ax.
 
     """
-    modelname=str(model).lower()
     ax=None
+    dotfile = None
+    pngfile = None
+    # Check model
     _check_model(model, 'randomforest')
     # Set envirerement
     _set_graphviz_path()
-    dotfile = filepath + '.dot'
-    pngfile = filepath + '.png'
+    
+    if export is not None:
+        dotfile = filepath + '.dot'
+        pngfile = filepath + '.png'
 
     if featnames is None:
         featnames = np.arange(0,len(model.feature_importances_)).astype(str)
 
     # Get model parameters
-    if ('gradientboosting' in modelname):
+    if ('gradientboosting' in str(model).lower()):
         estimator = model.estimators_[num_trees][0]
     else:
         if hasattr(model, 'estimators_'):
@@ -168,9 +173,8 @@ def randomforest(model, featnames=None, num_trees=0, filepath='tree', export='pn
     if export == 'pdf':
         s = Source.from_file(dotfile)
         s.view()
-
     # Save to png
-    if export == 'png':
+    elif export == 'png':
         try:
             call(['dot', '-Tpng', dotfile, '-o', pngfile, '-Gdpi=' + str(resolution)])
             fig, ax = plt.subplots(1, 1, figsize=figsize)
@@ -181,7 +185,14 @@ def randomforest(model, featnames=None, num_trees=0, filepath='tree', export='pn
         except:
             if _get_platform() != "windows":
                 print('[TREEPLOT] Install graphviz first: <sudo apt install python-pydot python-pydot-ng graphviz>')
+    else:
+        graph = Source(dot_data)
+        plt.show()
 
+    # tree_text = export_text(model, feature_names=featnames)
+    # out={}
+    # out['tree'] = tree_text
+    # out['ax'] = ax
     return(ax)
 
 
