@@ -13,7 +13,7 @@ else:
 with open("README.md", "r") as fh:
     long_description = fh.read()
 setuptools.setup(
-     install_requires=['sklearn','numpy','graphviz','matplotlib','wget'],
+     install_requires=['sklearn','numpy','graphviz','matplotlib','wget','funcsigs'],
      python_requires='>=3',
      name='treeplot',
      version=new_version,
