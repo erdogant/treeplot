@@ -7,7 +7,7 @@ from treeplot.treeplot import (
 
 __author__ = 'Erdogan Tasksen'
 __email__ = 'erdogant@gmail.com'
-__version__ = '0.1.6'
+__version__ = '0.1.7'
 
 # module level doc-string
 __doc__ = """
@@ -33,5 +33,6 @@ Example
 
 References
 ----------
-https://github.com/erdogant/treeplot
+* https://github.com/erdogant/treeplot
+* https://arogozhnikov.github.io/2016/06/24/gradient_boosting_explained.html
 """
