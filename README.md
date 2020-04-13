@@ -11,6 +11,15 @@ Developing explainable machine learning models is becoming more important in man
 
 Have fun!
 
+### Functions in treeplot
+
+Treeplot can plot the tree for Random-forest, decission trees, xgboost and gradient boosting models:
+  * treeplot.plot()         : Generic function to plot the tree of any of the four models with default settings
+  * treeplot.plot_tree()    : Plot the decission tree model. Parameters can be specified.
+  * treeplot.randomforest() : Plot the randomforest model. Parameters can be specified.
+  * treeplot.xgboost()      : Plot the xgboost model. Parameters can be specified.
+  * treeplot.import_example('iris') : Import example dataset
+
 ### Contents
 - [Installation](#-installation)
 - [Quick Start](#-quick-start)
@@ -33,13 +42,13 @@ git clone https://github.com/erdogant/treeplot.git
 cd treeplot
 python setup.py install
 ```  
-
+ 
 #### Import treeplot package
 ```python
 import treeplot
 ```
 
-#### Example RandomForest:
+### Example RandomForest:
 ```python
 # Load example dataset
 X,y = treeplot.import_example()
@@ -51,13 +60,15 @@ model = RandomForestClassifier(n_estimators=100, max_depth=2, random_state=0).fi
 ```python
 # Make plot
 ax = treeplot.plot(model)
+# or directly
+ax = treeplot.randomforest(model)
 ```
 <p align="center">
   <img src="https://github.com/erdogant/treeplot/blob/master/docs/figs/Figure_1.png" width="550" />
 </p>
 
 ```python
-# If you have more parameters to specify:
+# If more parameters needs to be specified, use the exact function:
 ax = treeplot.randomforest(model, export='pdf')
 ```
 
@@ -73,6 +84,8 @@ model = XGBClassifier(n_estimators=100, max_depth=2, random_state=0).fit(X, y)
 ```python
 # Make plot
 ax = treeplot.plot(model)
+# or directly
+ax = treeplot.xgboost(model)
 ```
 <p align="center">
   <img src="https://github.com/erdogant/treeplot/blob/master/docs/figs/Figure2_xgboost_hor.png" width="550" />
@@ -80,7 +93,7 @@ ax = treeplot.plot(model)
 </p>
 
 ```python
-# If you have more parameters to specify:
+# If more parameters needs to be specified, use the exact function:
 ax = treeplot.xgboost(model, plottype='vertical')
 ```
 <p align="center">
