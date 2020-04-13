@@ -3,7 +3,7 @@
 [![Python](https://img.shields.io/pypi/pyversions/treeplot)](https://img.shields.io/pypi/pyversions/treeplot)
 [![PyPI Version](https://img.shields.io/pypi/v/treeplot)](https://pypi.org/project/treeplot/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/erdogant/treeplot/blob/master/LICENSE)
-[![Downloads](https://pepy.tech/badge/treeplot/week)](https://pepy.tech/project/treeplot/week)
+[![Downloads](https://pepy.tech/badge/treeplot/month)](https://pepy.tech/project/treeplot/month)
 [![Donate](https://img.shields.io/badge/donate-grey.svg)](https://erdogant.github.io/donate/?currency=USD&amount=5)
 
 * treeplot is Python package to easily plot the tree derived from models such as decisiontrees, randomforest and xgboost.
