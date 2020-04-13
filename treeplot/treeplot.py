@@ -4,7 +4,7 @@
 # Author      : E.Taskesen
 # Contact     : erdogant@gmail.com
 # github      : https://github.com/erdogant/treeplot
-# Licence     : MIT
+# Licence     : See Licences
 # --------------------------------------------------
 
 # %% Libraries
@@ -42,14 +42,17 @@ def plot(model, featnames=None, num_trees=0, figsize=(25,25), verbose=3):
 
     Returns
     -------
-    None.
+    ax : Figure axis
+        Figure axis of the input model.
 
     """
     modelname=str(model).lower()
-    if ('tree' in modelname) or ('forest' in modelname) or ('gradientboosting' in modelname):
-        ax=randomforest(model, featnames=featnames, num_trees=num_trees, figsize=figsize, verbose=verbose)
-    elif ('xgb' in modelname):
+    if ('xgb' in modelname):
+        if verbose>=4: print('xgboost plotting pipeline.')
         ax=xgboost(model, featnames=featnames, num_trees=num_trees, figsize=figsize, verbose=verbose)
+    elif ('tree' in modelname) or ('forest' in modelname) or ('gradientboosting' in modelname):
+        if verbose>=4: print('tree plotting pipeline.')
+        ax=randomforest(model, featnames=featnames, num_trees=num_trees, figsize=figsize, verbose=verbose)
     else:
         print('[treeplot] Model %s not recognized.' %(modelname))
 
@@ -78,7 +81,8 @@ def xgboost(model, featnames=None, num_trees=0, plottype='horizontal', figsize=(
 
     Returns
     -------
-    ax.
+    ax : Figure axis
+        Figure axis of the input model.
 
     """
     try:
@@ -131,7 +135,8 @@ def randomforest(model, featnames=None, num_trees=0, filepath='tree', export='pn
 
     Returns
     -------
-    ax.
+    ax : Figure axis
+        Figure axis of the input model.
 
     """
     ax=None
@@ -189,10 +194,6 @@ def randomforest(model, featnames=None, num_trees=0, filepath='tree', export='pn
         graph = Source(dot_data)
         plt.show()
 
-    # tree_text = export_text(model, feature_names=featnames)
-    # out={}
-    # out['tree'] = tree_text
-    # out['ax'] = ax
     return(ax)
 
 
@@ -214,7 +215,8 @@ def import_example(data='random', n_samples=1000, n_feat=10):
 
     Returns
     -------
-    tuple containing dataset and response variable (X,y).
+    tuple (X,y).
+        X is the dataset and y the response variable.
 
     """
     try:
@@ -314,7 +316,9 @@ def _download_graphviz(url, verbose=3):
 
     Returns
     -------
-    None.
+    tuple : (gfile, curpath).
+        gfile : filename
+        curpath : currentpath
 
     """
     curpath = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'RESOURCES')

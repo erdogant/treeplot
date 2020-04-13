@@ -7,7 +7,7 @@ from treeplot.treeplot import (
 
 __author__ = 'Erdogan Tasksen'
 __email__ = 'erdogant@gmail.com'
-__version__ = '0.1.7'
+__version__ = '0.1.8'
 
 # module level doc-string
 __doc__ = """
@@ -16,7 +16,9 @@ treeplot
 
 Description
 -----------
-treeplot vizualizes a tree based on model.
+treeplot is Python package to easily plot the tree derived from models such as
+decisiontrees, randomforest, xgboost and gradient boosting models. Under the hood it makes many checks,
+downloads graphviz, sets the path and then plots the tree.
 
 Example
 -------
