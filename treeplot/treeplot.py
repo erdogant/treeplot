@@ -91,6 +91,8 @@ def xgboost(model, featnames=None, num_trees=0, plottype='horizontal', figsize=(
         raise ImportError('xgboost must be installed. Try to: <pip install xgboost>')
 
     _check_model(model, 'xgb')
+    # Set env
+    _set_graphviz_path()
 
     if plottype=='horizontal': plottype='UD'
     if plottype=='vertical': plottype='LR'
@@ -144,7 +146,7 @@ def randomforest(model, featnames=None, num_trees=0, filepath='tree', export='pn
     pngfile = None
     # Check model
     _check_model(model, 'randomforest')
-    # Set envirerement
+    # Set env
     _set_graphviz_path()
     
     if export is not None:
@@ -324,6 +326,9 @@ def _download_graphviz(url, verbose=3):
     curpath = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'RESOURCES')
     gfile = wget.filename_from_url(url)
     PATH_TO_DATA = os.path.join(curpath, gfile)
+    if not os.path.isdir(curpath):
+        if verbose>=3: print('[treeplot] Downloading graphviz..')
+        os.makedirs(curpath, exist_ok=True)
 
     # Check file exists.
     if not os.path.isfile(PATH_TO_DATA):
