@@ -46,17 +46,18 @@ def plot(model, featnames=None, num_trees=0, figsize=(25,25), verbose=3):
         Figure axis of the input model.
 
     """
-    modelname=str(model).lower()
+    modelname = str(model).lower()
     if ('xgb' in modelname):
         if verbose>=4: print('xgboost plotting pipeline.')
-        ax=xgboost(model, featnames=featnames, num_trees=num_trees, figsize=figsize, verbose=verbose)
+        ax = xgboost(model, featnames=featnames, num_trees=num_trees, figsize=figsize, plottype=plottype, verbose=verbose)
     elif ('tree' in modelname) or ('forest' in modelname) or ('gradientboosting' in modelname):
         if verbose>=4: print('tree plotting pipeline.')
-        ax=randomforest(model, featnames=featnames, num_trees=num_trees, figsize=figsize, verbose=verbose)
+        ax = randomforest(model, featnames=featnames, num_trees=num_trees, figsize=figsize, verbose=verbose)
     else:
         print('[treeplot] Model %s not recognized.' %(modelname))
+        ax = None
 
-    return(ax)
+    return ax
 
 
 # %% Plot tree
