@@ -10,6 +10,9 @@ graphviz-2.38/
 tree.dot
 tree.png
 tree.dot.pdf
+*.tsv
+*.json
+*.tfevents
 
 # Distribution / packaging
 .pylint.*
