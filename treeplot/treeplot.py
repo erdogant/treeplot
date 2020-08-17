@@ -23,7 +23,7 @@ URL = 'https://erdogant.github.io/datasets/graphviz-2.38.zip'
 
 
 # %% Plot tree
-def plot(model, featnames=None, num_trees=0, figsize=(25,25), verbose=3):
+def plot(model, featnames=None, num_trees=0, plottype='horizontal', figsize=(25,25), verbose=3):
     """Make tree plot for the input model.
 
     Parameters
@@ -34,6 +34,10 @@ def plot(model, featnames=None, num_trees=0, figsize=(25,25), verbose=3):
         list of feature names. The default is None.
     num_trees : int, default 0
         Specify the ordinal number of target tree
+    plottype : str, (default : 'horizontal')
+        Works only in case of xgb model.
+        * 'horizontal'
+        * 'vertical'
     figsize: tuple, default (25,25)
         Figure size, (height, width)
     verbose : int, optional
