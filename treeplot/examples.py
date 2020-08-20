@@ -31,6 +31,13 @@ model_gradientboost = gb.fit(X, y)
 ax = treeplot.plot(model_gradientboost)
 
 # %% XGBOOST EXAMPLE
+import xgboost as xgb
+model_xgb = xgb.XGBClassifier(n_estimators=100, max_depth=2, random_state=0).fit(X, y)
+
+ax = treeplot.plot(model_xgb)
+ax = treeplot.xgboost(model_xgb, plottype='vertical')
+
+# %% XGBOOST EXAMPLE
 from xgboost import XGBClassifier
 model_xgb = XGBClassifier(n_estimators=100, max_depth=2, random_state=0).fit(X, y)
 

@@ -101,7 +101,10 @@ def xgboost(model, featnames=None, num_trees=None, plottype='horizontal', figsiz
 
     if plottype=='horizontal': plottype='UD'
     if plottype=='vertical': plottype='LR'
-    if num_trees is None: num_trees = model.best_iteration
+    if (num_trees is None) and hasattr(model, 'best_iteration'):
+        num_trees = model.best_iteration
+    elif num_trees is None:
+        num_trees = 0
 
     try:
         fig, ax = plt.subplots(1, 1, figsize=figsize)
