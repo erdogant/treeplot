@@ -23,7 +23,7 @@ URL = 'https://erdogant.github.io/datasets/graphviz-2.38.zip'
 
 
 # %% Plot tree
-def plot(model, featnames=None, num_trees=0, plottype='horizontal', figsize=(25,25), verbose=3):
+def plot(model, featnames=None, num_trees=None, plottype='horizontal', figsize=(25,25), verbose=3):
     """Make tree plot for the input model.
 
     Parameters
@@ -32,8 +32,8 @@ def plot(model, featnames=None, num_trees=0, plottype='horizontal', figsize=(25,
         xgboost or randomforest model.
     featnames : list, optional
         list of feature names. The default is None.
-    num_trees : int, default 0
-        Specify the ordinal number of target tree
+    num_trees : int, default None
+        The best performing tree is choosen. Specify any other ordinal number for another target tree
     plottype : str, (default : 'horizontal')
         Works only in case of xgb model.
         * 'horizontal'
@@ -65,7 +65,7 @@ def plot(model, featnames=None, num_trees=0, plottype='horizontal', figsize=(25,
 
 
 # %% Plot tree
-def xgboost(model, featnames=None, num_trees=0, plottype='horizontal', figsize=(25,25), verbose=3):
+def xgboost(model, featnames=None, num_trees=None, plottype='horizontal', figsize=(25,25), verbose=3):
     """Plot tree based on a xgboost.
 
     Parameters
@@ -74,8 +74,8 @@ def xgboost(model, featnames=None, num_trees=0, plottype='horizontal', figsize=(
         xgboost model.
     featnames : list, optional
         list of feature names. The default is None.
-    num_trees : int, default 0
-        Specify the ordinal number of target tree
+    num_trees : int, default None
+        The best performing tree is choosen. Specify any other ordinal number for another target tree
     plottype : str, optional
         Make 'horizontal' or 'vertical' plot. The default is 'horizontal'.
     figsize: tuple, default (25,25)
@@ -101,6 +101,7 @@ def xgboost(model, featnames=None, num_trees=0, plottype='horizontal', figsize=(
 
     if plottype=='horizontal': plottype='UD'
     if plottype=='vertical': plottype='LR'
+    if num_trees is None: num_trees = model.best_iteration
 
     try:
         fig, ax = plt.subplots(1, 1, figsize=figsize)
@@ -116,7 +117,7 @@ def xgboost(model, featnames=None, num_trees=0, plottype='horizontal', figsize=(
 
 
 # %% Plot tree
-def randomforest(model, featnames=None, num_trees=0, filepath='tree', export='png', resolution=100, figsize=(25,25), verbose=3):
+def randomforest(model, featnames=None, num_trees=None, filepath='tree', export='png', resolution=100, figsize=(25,25), verbose=3):
     """Plot tree based on a randomforest.
 
     Parameters
@@ -149,11 +150,13 @@ def randomforest(model, featnames=None, num_trees=0, filepath='tree', export='pn
     ax=None
     dotfile = None
     pngfile = None
+    if num_trees is None: num_trees = 0
+
     # Check model
     _check_model(model, 'randomforest')
     # Set env
     _set_graphviz_path()
-    
+
     if export is not None:
         dotfile = filepath + '.dot'
         pngfile = filepath + '.png'
