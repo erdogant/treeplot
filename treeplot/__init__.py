@@ -2,6 +2,7 @@ from treeplot.treeplot import (
     plot,
     randomforest,
 	xgboost,
+    lgbm,
     import_example,
 )
 

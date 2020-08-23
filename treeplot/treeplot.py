@@ -57,8 +57,8 @@ def plot(model, featnames=None, num_trees=None, plottype='horizontal', figsize=(
     elif ('tree' in modelname) or ('forest' in modelname) or ('gradientboosting' in modelname):
         if verbose>=4: print('tree plotting pipeline.')
         ax = randomforest(model, featnames=featnames, num_trees=num_trees, figsize=figsize, verbose=verbose)
-    if ('lgb' in modelname):
-        ax = plot_lgb(model, featnames=featnames, num_trees=num_trees, figsize=figsize, verbose=verbose)
+    elif ('lgb' in modelname):
+        ax = lgbm(model, featnames=featnames, num_trees=num_trees, figsize=figsize, verbose=verbose)
     else:
         print('[treeplot] >Model not recognized: %s' %(modelname))
         ax = None
@@ -67,7 +67,7 @@ def plot(model, featnames=None, num_trees=None, plottype='horizontal', figsize=(
 
 
 # %% Plot tree
-def plot_lgb(model, featnames=None, num_trees=None, figsize=(25,25), verbose=3):
+def lgbm(model, featnames=None, num_trees=None, figsize=(25,25), verbose=3):
     try:
         from lightgbm import plot_tree, plot_importance
     except:
