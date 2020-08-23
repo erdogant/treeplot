@@ -132,7 +132,7 @@ def xgboost(model, featnames=None, num_trees=None, plottype='horizontal', figsiz
     try:
         from xgboost import plot_tree, plot_importance
     except:
-        raise ImportError('xgboost must be installed. Try to: <pip install xgboost>')
+        if verbose>=1: raise ImportError('xgboost must be installed. Try to: <pip install xgboost>')
 
     _check_model(model, 'xgb')
     # Set env
@@ -142,20 +142,27 @@ def xgboost(model, featnames=None, num_trees=None, plottype='horizontal', figsiz
     if plottype=='vertical': plottype='LR'
     if (num_trees is None) and hasattr(model, 'best_iteration'):
         num_trees = model.best_iteration
+        if verbose>=3: print('[treeplot] >Best detected tree: %.0d' %(num_trees))
     elif num_trees is None:
         num_trees = 0
 
+    ax1 = None
     try:
-        fig, ax = plt.subplots(1, 1, figsize=figsize)
-        plot_tree(model, num_trees=num_trees, rankdir=plottype, ax=ax)
+        fig, ax1 = plt.subplots(1, 1, figsize=figsize)
+        plot_tree(model, num_trees=num_trees, rankdir=plottype, ax=ax1)
     except:
         if _get_platform() != "windows":
-            print('[TREEPLOT] Install graphviz first: <sudo apt install python-pydot python-pydot-ng graphviz>')
+            print('[treeplot] >Install graphviz first: <sudo apt install python-pydot python-pydot-ng graphviz>')
 
     # Plot importance
-    plot_importance(model)
+    ax2 = None
+    try:
+        fig, ax2 = plt.subplots(1, 1, figsize=figsize)
+        plot_importance(model, max_num_features=50, ax=ax2)
+    except:
+        print('[treeplot] >Error: importance can not be plotted. Booster.get_score() results in empty. This maybe caused by having all trees as decision dumps.')
 
-    return(ax)
+    return(ax1, ax2)
 
 
 # %% Plot tree
@@ -241,7 +248,7 @@ def randomforest(model, featnames=None, num_trees=None, filepath='tree', export=
             plt.show()
         except:
             if _get_platform() != "windows":
-                print('[TREEPLOT] Install graphviz first: <sudo apt install python-pydot python-pydot-ng graphviz>')
+                print('[treeplot] >Install graphviz first: <sudo apt install python-pydot python-pydot-ng graphviz>')
     else:
         graph = Source(dot_data)
         plt.show()
@@ -304,7 +311,7 @@ def _set_graphviz_path(verbose=3):
         getZip = os.path.abspath(os.path.join(curpath, gfile))
         # Unzip if path does not exists
         if not os.path.isdir(getPath):
-            if verbose>=3: print('[TREEPLOT] Extracting graphviz files..')
+            if verbose>=3: print('[treeplot] >Extracting graphviz files..')
             [pathname, _] = os.path.split(getZip)
             # Unzip
             zip_ref = zipfile.ZipFile(getZip, 'r')
@@ -323,7 +330,7 @@ def _set_graphviz_path(verbose=3):
 
     # Add to system
     if finPath not in os.environ["PATH"]:
-        if verbose>=3: print('[TREEPLOT] Set path in environment.')
+        if verbose>=3: print('[treeplot] >Set path in environment.')
         os.environ["PATH"] += os.pathsep + finPath
 
     return(finPath)
@@ -349,11 +356,13 @@ def _check_model(model, expected):
         if ('forest' in modelname) or ('tree' in modelname) or ('gradientboosting' in modelname):
             pass
         else:
-            print('WARNING: The input model seems not to be a tree-based model?')
+            print('[treeplot] >>Warning: The input model seems not to be a tree-based model?')
     if (expected=='xgb'):
         if ('xgb' not in modelname):
-            print('WARNING: The input model seems not to be a xgboost model?')
-
+            print('[treeplot] >Warning: The input model seems not to be a xgboost model?')
+    if (expected=='lgb'):
+        if ('lgb' not in modelname):
+            print('[treeplot] >Warning: The input model seems not to be a lightgbm model?')
 
 # %% Import example dataset from github.
 def _download_graphviz(url, verbose=3):
@@ -377,13 +386,13 @@ def _download_graphviz(url, verbose=3):
     gfile = wget.filename_from_url(url)
     PATH_TO_DATA = os.path.join(curpath, gfile)
     if not os.path.isdir(curpath):
-        if verbose>=3: print('[treeplot] Downloading graphviz..')
+        if verbose>=3: print('[treeplot] >Downloading graphviz..')
         os.makedirs(curpath, exist_ok=True)
 
     # Check file exists.
     if not os.path.isfile(PATH_TO_DATA):
         # Download data from URL
-        if verbose>=3: print('[treeplot] Downloading graphviz..')
+        if verbose>=3: print('[treeplot] >Downloading graphviz..')
         wget.download(url, curpath)
 
     return(gfile, curpath)
