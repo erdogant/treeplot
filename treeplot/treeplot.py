@@ -57,12 +57,51 @@ def plot(model, featnames=None, num_trees=None, plottype='horizontal', figsize=(
     elif ('tree' in modelname) or ('forest' in modelname) or ('gradientboosting' in modelname):
         if verbose>=4: print('tree plotting pipeline.')
         ax = randomforest(model, featnames=featnames, num_trees=num_trees, figsize=figsize, verbose=verbose)
+    if ('lgb' in modelname):
+        ax = plot_lgb(model, featnames=featnames, num_trees=num_trees, figsize=figsize, verbose=verbose)
     else:
-        print('[treeplot] Model %s not recognized.' %(modelname))
+        print('[treeplot] >Model not recognized: %s' %(modelname))
         ax = None
 
     return ax
 
+
+# %% Plot tree
+def plot_lgb(model, featnames=None, num_trees=None, figsize=(25,25), verbose=3):
+    try:
+        from lightgbm import plot_tree, plot_importance
+    except:
+        if verbose>=1: raise ImportError('lightgbm must be installed. Try to: <pip install lightgbm>')
+        return None
+
+    # Check model
+    _check_model(model, 'lgb')
+    # Set env
+    _set_graphviz_path()
+
+    if (num_trees is None) and hasattr(model, 'best_iteration_'):
+        num_trees = model.best_iteration_
+        if verbose>=3: print('[treeplot] >Best detected tree: %.0d' %(num_trees))
+    elif num_trees is None:
+        num_trees = 0
+    
+    ax1 = None
+    try:
+        fig, ax1 = plt.subplots(1, 1, figsize=figsize)
+        plot_tree(model, tree_index=num_trees, dpi=200, ax=ax1)
+    except:
+        if _get_platform() != "windows":
+            print('[treeplot] >Install graphviz first: <sudo apt install python-pydot python-pydot-ng graphviz>')
+
+    # Plot importance
+    ax2 = None
+    try:
+        fig, ax2 = plt.subplots(1, 1, figsize=figsize)
+        plot_importance(model, max_num_features=50, ax=ax2)
+    except:
+        print('[treeplot] >Error: importance can not be plotted. Booster.get_score() results in empty. This maybe caused by having all trees as decision dumps.')
+
+    return(ax1, ax2)
 
 # %% Plot tree
 def xgboost(model, featnames=None, num_trees=None, plottype='horizontal', figsize=(25,25), verbose=3):
