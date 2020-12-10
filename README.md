@@ -15,7 +15,6 @@ Have fun!
 
 Treeplot can plot the tree for Random-forest, decission trees, xgboost and gradient boosting models:
   * treeplot.plot()         : Generic function to plot the tree of any of the four models with default settings
-  * treeplot.plot_tree()    : Plot the decission tree model. Parameters can be specified.
   * treeplot.randomforest() : Plot the randomforest model. Parameters can be specified.
   * treeplot.xgboost()      : Plot the xgboost model. Parameters can be specified.
   * treeplot.import_example('iris') : Import example dataset
