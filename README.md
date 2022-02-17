@@ -23,13 +23,6 @@ Treeplot can plot the tree for Random-forest, decission trees, xgboost and gradi
   * treeplot.xgboost()      : Plot the xgboost model. Parameters can be specified.
   * treeplot.import_example('iris') : Import example dataset
 
-### Contents
-- [Installation](#-installation)
-- [Quick Start](#-quick-start)
-- [Contribute](#-contribute)
-- [Maintainers](#-maintainers)
-- [License](#-copyright)
-
 ### Installation
 * Install treeplot from PyPI (recommended). treeplot is compatible with Python 3.6+ and runs on Linux, MacOS X and Windows. 
 * It is distributed under the MIT license.
