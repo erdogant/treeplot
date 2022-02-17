@@ -6,10 +6,12 @@
 [![Downloads](https://pepy.tech/badge/treeplot)](https://pepy.tech/project/treeplot)
 [![Downloads](https://pepy.tech/badge/treeplot/month)](https://pepy.tech/project/treeplot/month)
 
-* treeplot is Python package to easily plot the tree derived from models such as decisiontrees, randomforest and xgboost.
+* ``treeplot`` is Python package to easily plot the tree derived from models such as decisiontrees, randomforest and xgboost.
 Developing explainable machine learning models is becoming more important in many domains. The most popular and classical explainable models are still tree based. Think of decision trees or random forest. The tree that is learned can be visualized and then explained. However, it can be a challange to simply plot the tree. Think of configuration issues with dot files, path locations to graphviz, differences across operating systems, differences across editors such as jupyter notebook, colab, spyder etc. This frustration led to this library, an easy way to plot the decision trees 🌲. It works for Random-forest, decission trees, xgboost and gradient boosting models. Under the hood it makes many checks, downloads graphviz, sets the path and then plots the tree.
 
-Have fun!
+# 
+**Star this repo if you like it! ⭐️**
+#
 
 ### Functions in treeplot
 
@@ -35,12 +37,6 @@ Treeplot can plot the tree for Random-forest, decission trees, xgboost and gradi
 pip install treeplot
 ```
 
-* Alternatively, install treeplot from the GitHub source:
-```bash
-git clone https://github.com/erdogant/treeplot.git
-cd treeplot
-python setup.py install
-```  
  
 #### Import treeplot package
 ```python
