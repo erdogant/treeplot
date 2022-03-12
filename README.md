@@ -52,41 +52,39 @@ On the [documentation pages](https://erdogant.github.io/treeplot/) you can find 
 
 <p align="left">
   <a href="https://erdogant.github.io/treeplot/pages/html/Examples.html#">
-  <img src="https://github.com/erdogant/treeplot/blob/master/docs/figs/Figure_1.png" width="550" />
+  <img src="https://github.com/erdogant/treeplot/blob/master/docs/figs/fig_breast_randomforest.png" width="600" />
   </a>
 </p>
 
 
 # 
 
-#### Example XGboost:
-```python
-# Load example dataset
-X,y = treeplot.import_example()
-# Learn model
-from xgboost import XGBClassifier
-model = XGBClassifier(n_estimators=100, max_depth=2, random_state=0).fit(X, y)
-```
 
-```python
-# Make plot
-ax = treeplot.plot(model)
-# or directly
-ax = treeplot.xgboost(model)
-```
-<p align="center">
-  <img src="https://github.com/erdogant/treeplot/blob/master/docs/figs/Figure2_xgboost_hor.png" width="550" />
-  <img src="https://github.com/erdogant/treeplot/blob/master/docs/figs/Figure2_featimportance.png" width="350" />
+* [Example: XGboot](https://erdogant.github.io/treeplot/pages/html/Examples.html#xgboost)
+
+<p align="left">
+  <a href="https://erdogant.github.io/treeplot/pages/html/Examples.html#xgboost">
+  <img src="https://github.com/erdogant/treeplot/blob/master/docs/figs/fig_breast_xgboot_tree.png" width="600" />
+   <br>
+  <img src="https://github.com/erdogant/treeplot/blob/master/docs/figs/fig_breast_xgboot_weights.png" width="600" />
+  </a>
 </p>
 
-```python
-# If more parameters needs to be specified, use the exact function:
-ax = treeplot.xgboost(model, plottype='vertical')
-```
-<p align="center">
+
+<p align="left">
+  <a href="https://erdogant.github.io/treeplot/pages/html/Examples.html#">
   <img src="https://github.com/erdogant/treeplot/blob/master/docs/figs/Figure2_xgboost_ver.png" width="550" />
+  </a>
 </p>
 
+# 
+* [Example: gradientboostingclassifier](https://erdogant.github.io/treeplot/pages/html/Examples.html#gradientboostingclassifier)
+# 
+* [Example: lightbm](https://erdogant.github.io/treeplot/pages/html/Examples.html#lightbm)
+# 
+* [Example: Explore other trees such as second best tree etc](https://erdogant.github.io/treeplot/pages/html/Examples.html#plot-second-best-tree-and-other-trees)
+
+<hr>
 
 #### Maintainers
 * Erdogan Taskesen, github: [erdogant](https://github.com/erdogant)
@@ -95,5 +93,3 @@ ax = treeplot.xgboost(model, plottype='vertical')
 * Contributions are welcome.
 * If you wish to buy me a <a href="https://www.buymeacoffee.com/erdogant">Coffee</a> for this work, it is very appreciated :)
 
-#### Licence
-See [LICENSE](LICENSE) for details.
