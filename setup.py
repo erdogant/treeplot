@@ -22,7 +22,7 @@ setuptools.setup(
      description="Python package treeplot vizualizes a tree based on a randomforest or xgboost model.",
      long_description=long_description,
      long_description_content_type="text/markdown",
-     url="https://github.com/erdogant/treeplot",
+     url="https://erdogant.github.io//treeplot",
 	 download_url = 'https://github.com/erdogant/treeplot/archive/'+new_version+'.tar.gz',
      packages=setuptools.find_packages(), # Searches throughout all dirs for files to include
      include_package_data=True, # Must be true to include files depicted in MANIFEST.in
