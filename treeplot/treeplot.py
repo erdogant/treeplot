@@ -82,14 +82,13 @@ def lgbm(model, featnames=None, num_trees=None, figsize=(25,25), verbose=3):
 
     if (num_trees is None) and hasattr(model, 'best_iteration_'):
         num_trees = model.best_iteration_
-        if verbose>=3: print('[treeplot] >Best detected tree: %.0d' %(num_trees))
     elif num_trees is None:
         num_trees = 0
     
     ax1 = None
     try:
         fig, ax1 = plt.subplots(1, 1, figsize=figsize)
-        plot_tree(model, tree_index=num_trees, dpi=200, ax=ax1)
+        plot_tree(model, dpi=200, ax=ax1)
     except:
         if _get_platform() != "windows":
             print('[treeplot] >Install graphviz first: <sudo apt install python-pydot python-pydot-ng graphviz>')
