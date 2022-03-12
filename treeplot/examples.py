@@ -67,9 +67,13 @@ model = xgb.XGBClassifier(use_label_encoder=False, n_estimators=10, max_depth=5,
 ax = tree.plot(model, featnames=data.feature_names, num_trees=5)
 
 
+# %% EXAMPLE
+X, y = tree.import_example()
+
 # %% RandromForest EXAMPLE
 from sklearn.ensemble import RandomForestClassifier
 model_rf = RandomForestClassifier(n_estimators=100, max_depth=2, random_state=0).fit(X, y)
+
 
 ax = tree.randomforest(model_rf, export='png')
 ax = tree.randomforest(model_rf, export='pdf')
