@@ -174,9 +174,11 @@ Let's vizualize the second and third best tree.
 .. table:: Tree #2 and #5 for breastcancer using XGboost.
    :align: center
 
-   +----------+----------+
-   | |fig7|   | |fig8|   |
-   +----------+----------+
+   +----------+
+   | |fig7|   |
+   +----------+
+   | |fig8|   |
+   +----------+
 
 
 XGBoost Horizontal vs. Vertical
