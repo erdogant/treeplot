@@ -1,0 +1,23 @@
+# YAML 1.2
+---
+authors: 
+  -
+    family-names: Taskesen
+    given-names: Erdogan
+    orcid: "https://orcid.org/0000-0002-3430-9618"
+cff-version: "1.1.0"
+date-released: 2020-10-07
+keywords: 
+  - "python"
+  - "xgboost"
+  - "tree-structure"
+  - "treeplot"
+  - "randomforest"
+  - "randomforest"
+  - "gradient-boosting"
+license: "MIT"
+message: "If you use this software, please cite it using these metadata."
+repository-code: "erdogant.github.io/treeplot"
+title: "Plot XGboost and Randomforest Tree"
+version: "0.1.0"
+...
