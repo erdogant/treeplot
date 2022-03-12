@@ -59,7 +59,6 @@ On the [documentation pages](https://erdogant.github.io/treeplot/) you can find 
 
 # 
 
-
 * [Example: XGboot](https://erdogant.github.io/treeplot/pages/html/Examples.html#xgboost)
 
 <p align="left">
@@ -70,12 +69,6 @@ On the [documentation pages](https://erdogant.github.io/treeplot/) you can find 
   </a>
 </p>
 
-
-<p align="left">
-  <a href="https://erdogant.github.io/treeplot/pages/html/Examples.html#">
-  <img src="https://github.com/erdogant/treeplot/blob/master/docs/figs/Figure2_xgboost_ver.png" width="550" />
-  </a>
-</p>
 
 # 
 * [Example: gradientboostingclassifier](https://erdogant.github.io/treeplot/pages/html/Examples.html#gradientboostingclassifier)
