@@ -3,9 +3,10 @@ Input
 
 The input for ``treeplot`` is a **model** that is learned with: 
 
-	* DecisionTreeClassifier
-	* GradientBoostingClassifier
-	* XGBClassifier
+	* Decision Tree Classifier
+	* Gradient Boosting Classifier
+	* XGBoost Classifier
+	* LightBM Classifier
 
 In the first run, *graphviz* will be downloaded and added to path locations. A demonstration is shown below.
 
