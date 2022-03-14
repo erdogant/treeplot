@@ -1,4 +1,4 @@
-# treeplot
+# treeplot - Plot tree based machine learning models.
 
 [![Python](https://img.shields.io/pypi/pyversions/treeplot)](https://img.shields.io/pypi/pyversions/treeplot)
 [![PyPI Version](https://img.shields.io/pypi/v/treeplot)](https://pypi.org/project/treeplot/)
