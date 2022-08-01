@@ -12,6 +12,45 @@ Treeplot can plot the tree for Random-forest, decission trees, xgboost and gradi
 	* .LightBM	: Plot the LightBM model.
 
 
+.. |figd| image:: ../figs/fig_breast_randomforest.png
+
+.. table:: Decision tree for breastcancerusing RandomForest.
+   :align: center
+
+   +----------+
+   | |figd|   |
+   +----------+
+
+
+Sponsor
+=======
+**This library is created and maintained in my free time**. I like to work on my open-source libraries, and you can help by becoming a sponsor! The easiest way is by simply following me on medium, and it will cost you nothing! Simply go to my `medium profile <https://erdogant.medium.com/>`_ and press "follow". Read more on my `sponsor github page <https://github.com/sponsors/erdogant/>`_ why this is important. This also gives you various other ways to sponsor me!
+
+
+Star is important too!
+======================
+If you like this project, **star** this repo at the github page! This is important because only then I know how much you like it :)
+
+
+Quick install
+=============
+
+.. code-block:: console
+
+   pip install treeplot
+
+
+Github
+======
+Please report bugs, issues and feature extensions there.
+Github, `erdogant/treeplot <https://github.com/erdogant/treeplot/>`_.
+
+
+Citing treeplot
+===============
+The bibtex can be found in the right side menu at the `github page <https://github.com/erdogant/treeplot/>`_.
+
+
 Content
 =======
 
@@ -44,40 +83,6 @@ Content
   treeplot.treeplot
 
 * :ref:`genindex`
-
-
-Quick install
--------------
-
-.. code-block:: console
-
-   pip install treeplot
-
-
-
-
-Github
-------------------------------
-
-Please report bugs, issues and feature extensions there.
-Github, `erdogant/treeplot <https://github.com/erdogant/treeplot/>`_.
-
-
-Citing *treeplot*
------------------------
-
-The bibtex can be found in the right side menu at the `github page <https://github.com/erdogant/treeplot/>`_.
-
-
-Sponsor this project
-------------------------------
-
-If you like this project, **Star** this repo at the github page and become a **sponsor**!
-Read more why this is important on my sponsor page. The **sponsor button** will direct you to the sponsor github page.
-
-.. raw:: html
-
-	<iframe src="https://github.com/sponsors/erdogant/button" title="Sponsor erdogant" height="35" width="116" style="border: 0;"></iframe>
 
 
 

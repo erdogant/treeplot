@@ -1,6 +1,6 @@
-import treeplot as tree
-print(dir(tree))
-print(tree.__version__)
+# import treeplot as tree
+# print(dir(tree))
+# print(tree.__version__)
 
 
 # %% Make example dataset

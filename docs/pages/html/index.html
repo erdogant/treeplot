@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -95,7 +96,7 @@
            <div itemprop="articleBody">
              
   <section id="treeplot-s-documentation">
-<h1>treeplot’s documentation!<a class="headerlink" href="#treeplot-s-documentation" title="Permalink to this headline"></a></h1>
+<h1>treeplot’s documentation!<a class="headerlink" href="#treeplot-s-documentation" title="Permalink to this heading"></a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">treeplot</span></code> is Python package to easily plot the tree derived from models such as decisiontrees, randomforest and xgboost. Developing explainable machine learning models is becoming more important in many domains. The most popular and classical explainable models are still tree based. Think of decision trees or random forest. The tree that is learned can be visualized and then explained. However, it can be a challange to simply plot the tree. Think of configuration issues with dot files, path locations to graphviz, differences across operating systems, differences across editors such as jupyter notebook, colab, spyder etc. This frustration led to this library, an easy way to plot the decision trees 🌲. It works for Random-forest, decission trees, xgboost and gradient boosting models. Under the hood it makes many checks, downloads graphviz, sets the path and then plots the tree.</p>
 <p>Treeplot can plot the tree for Random-forest, decission trees, xgboost and gradient boosting models:</p>
 <blockquote>
@@ -106,9 +107,42 @@
 <li><p>.LightBM      : Plot the LightBM model.</p></li>
 </ul>
 </div></blockquote>
+<table class="docutils align-center" id="id1">
+<caption><span class="caption-text">Decision tree for breastcancerusing RandomForest.</span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="figd" src="_images/fig_breast_randomforest.png" /></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sponsor">
+<h1>Sponsor<a class="headerlink" href="#sponsor" title="Permalink to this heading"></a></h1>
+<p><strong>This library is created and maintained in my free time</strong>. I like to work on my open-source libraries, and you can help by becoming a sponsor! The easiest way is by simply following me on medium, and it will cost you nothing! Simply go to my <a class="reference external" href="https://erdogant.medium.com/">medium profile</a> and press “follow”. Read more on my <a class="reference external" href="https://github.com/sponsors/erdogant/">sponsor github page</a> why this is important. This also gives you various other ways to sponsor me!</p>
+</section>
+<section id="star-is-important-too">
+<h1>Star is important too!<a class="headerlink" href="#star-is-important-too" title="Permalink to this heading"></a></h1>
+<p>If you like this project, <strong>star</strong> this repo at the github page! This is important because only then I know how much you like it :)</p>
+</section>
+<section id="quick-install">
+<h1>Quick install<a class="headerlink" href="#quick-install" title="Permalink to this heading"></a></h1>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install treeplot</span>
+</pre></div>
+</div>
+</section>
+<section id="github">
+<h1>Github<a class="headerlink" href="#github" title="Permalink to this heading"></a></h1>
+<p>Please report bugs, issues and feature extensions there.
+Github, <a class="reference external" href="https://github.com/erdogant/treeplot/">erdogant/treeplot</a>.</p>
+</section>
+<section id="citing-treeplot">
+<h1>Citing treeplot<a class="headerlink" href="#citing-treeplot" title="Permalink to this heading"></a></h1>
+<p>The bibtex can be found in the right side menu at the <a class="reference external" href="https://github.com/erdogant/treeplot/">github page</a>.</p>
 </section>
 <section id="content">
-<h1>Content<a class="headerlink" href="#content" title="Permalink to this headline"></a></h1>
+<h1>Content<a class="headerlink" href="#content" title="Permalink to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
 <ul>
@@ -146,29 +180,9 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 </ul>
-<section id="quick-install">
-<h2>Quick install<a class="headerlink" href="#quick-install" title="Permalink to this headline"></a></h2>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install treeplot</span>
-</pre></div>
-</div>
-</section>
-<section id="github">
-<h2>Github<a class="headerlink" href="#github" title="Permalink to this headline"></a></h2>
-<p>Please report bugs, issues and feature extensions there.
-Github, <a class="reference external" href="https://github.com/erdogant/treeplot/">erdogant/treeplot</a>.</p>
-</section>
-<section id="citing-treeplot">
-<h2>Citing <em>treeplot</em><a class="headerlink" href="#citing-treeplot" title="Permalink to this headline"></a></h2>
-<p>The bibtex can be found in the right side menu at the <a class="reference external" href="https://github.com/erdogant/treeplot/">github page</a>.</p>
-</section>
-<section id="sponsor-this-project">
-<h2>Sponsor this project<a class="headerlink" href="#sponsor-this-project" title="Permalink to this headline"></a></h2>
-<p>If you like this project, <strong>Star</strong> this repo at the github page and become a <strong>sponsor</strong>!
-Read more why this is important on my sponsor page. The <strong>sponsor button</strong> will direct you to the sponsor github page.</p>
-<iframe src="https://github.com/sponsors/erdogant/button" title="Sponsor erdogant" height="35" width="116" style="border: 0;"></iframe></section>
 </section>
 <section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline"></a></h1>
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
