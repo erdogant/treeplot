@@ -13,7 +13,7 @@ Treeplot can be used for: **Random-forest**, **Decision trees**, **XGboost** and
 
 .. |figd| image:: ../figs/fig_breast_randomforest.png
 
-.. table:: Decision tree for breastcancerusing RandomForest.
+.. table:: Example treeplot.
    :align: center
 
    +----------+
