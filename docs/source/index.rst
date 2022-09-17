@@ -21,14 +21,14 @@ Treeplot can be used for: **Random-forest**, **Decision trees**, **XGboost** and
    +----------+
 
 
-Sponsor
-=======
-**This library is created and maintained in my free time**. I like to work on my open-source libraries, and you can help by becoming a sponsor! The easiest way is by simply following me on medium, and it will cost you nothing! Simply go to my `medium profile <https://erdogant.medium.com/>`_ and press "follow". Read more on my `sponsor github page <https://github.com/sponsors/erdogant/>`_ why this is important. This also gives you various other ways to sponsor me!
-
-
-Star is important too!
+Star is important
 ======================
-If you like this project, **star** this repo at the github page! This is important because only then I know how much you like it :)
+If you ❤️ this project, **star** this repo at the `github page <https://github.com/erdogant/treeplot/>`_!
+
+
+Github
+======
+Please report bugs, issues and feature extensions at `github <https://github.com/erdogant/treeplot/>`_.
 
 
 Quick install
@@ -39,15 +39,6 @@ Quick install
    pip install treeplot
 
 
-Github
-======
-Please report bugs, issues and feature extensions there.
-Github, `erdogant/treeplot <https://github.com/erdogant/treeplot/>`_.
-
-
-Citing treeplot
-===============
-The bibtex can be found in the right side menu at the `github page <https://github.com/erdogant/treeplot/>`_.
 
 
 Content
@@ -80,8 +71,6 @@ Content
   Documentation
   Coding quality
   treeplot.treeplot
-
-* :ref:`genindex`
 
 
 
