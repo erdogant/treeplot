@@ -24,7 +24,7 @@ Treeplot can be used for: **Random-forest**, **Decision trees**, **XGboost** and
 
 You contribution is important
 ==============================
-If you ❤️ this project, **star** this repo at the `github page <https://github.com/erdogant/treeplot/>`_ and have a look at the `sponser page <https://github.com/erdogant/treeplot/pages/html/Documentation.html>`_!
+If you ❤️ this project, **star** this repo at the `github page <https://github.com/erdogant/treeplot/>`_ and have a look at the `sponser page <https://erdogant.github.io/treeplot/pages/html/Documentation.html>`_!
 
 
 Github
