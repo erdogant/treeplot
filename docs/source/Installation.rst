@@ -17,9 +17,10 @@ Pypi
 Github source
 ************************************
 
+Install directly from github source (beta versions):
+
 .. code-block:: console
 
-    # Install directly from github
     pip install git+https://github.com/erdogant/treeplot
 
 
