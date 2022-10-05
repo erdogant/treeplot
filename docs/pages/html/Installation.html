@@ -15,7 +15,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -47,6 +49,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#pypi">Pypi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#github-source">Github source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graphviz">Graphviz</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#uninstalling">Uninstalling</a><ul>
@@ -105,9 +108,9 @@
            <div itemprop="articleBody">
              
   <section id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h1>
 <section id="pypi">
-<h2>Pypi<a class="headerlink" href="#pypi" title="Permalink to this headline"></a></h2>
+<h2>Pypi<a class="headerlink" href="#pypi" title="Permalink to this heading"></a></h2>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Install from Pypi:
 <span class="go">pip install treeplot</span>
 
@@ -117,17 +120,36 @@
 </div>
 </section>
 <section id="github-source">
-<h2>Github source<a class="headerlink" href="#github-source" title="Permalink to this headline"></a></h2>
+<h2>Github source<a class="headerlink" href="#github-source" title="Permalink to this heading"></a></h2>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Install directly from github
 <span class="go">pip install git+https://github.com/erdogant/treeplot</span>
 </pre></div>
 </div>
 </section>
+<section id="graphviz">
+<h2>Graphviz<a class="headerlink" href="#graphviz" title="Permalink to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">treeplot</span></code> package contains the required graphviz libraries and it should work out of the box for both Windows
+and Unix machines. However, in some cases it does require a manual installation of the graphviz package.
+Binaries for graphviz can be downloaded from the graphviz project homepage, and the Python wrapper installed from pypi
+with pip install graphviz.</p>
+<p>If you use the conda package manager, the graphviz binaries and the python package can be installed with conda install python-graphviz.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">conda install python-graphviz</span>
+</pre></div>
+</div>
+<p>If you use the pip package manager, try the Python wrapper installed from Pypi.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install graphviz</span>
+</pre></div>
+</div>
+<p>An alternative example how to download and install this for Unix machines:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install python-pydot python-pydot-ng graphviz</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="uninstalling">
-<h1>Uninstalling<a class="headerlink" href="#uninstalling" title="Permalink to this headline"></a></h1>
+<h1>Uninstalling<a class="headerlink" href="#uninstalling" title="Permalink to this heading"></a></h1>
 <section id="remove-installation">
-<h2>Remove installation<a class="headerlink" href="#remove-installation" title="Permalink to this headline"></a></h2>
+<h2>Remove installation<a class="headerlink" href="#remove-installation" title="Permalink to this heading"></a></h2>
 <p>Note that the removal of the environment will also remove the <code class="docutils literal notranslate"><span class="pre">treeplot</span></code> installation.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Install from Pypi:
 <span class="go">pip uninstall treeplot</span>

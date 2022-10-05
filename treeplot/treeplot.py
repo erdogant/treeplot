@@ -90,8 +90,9 @@ def lgbm(model, featnames=None, num_trees=None, figsize=(25,25), verbose=3):
         fig, ax1 = plt.subplots(1, 1, figsize=figsize)
         plot_tree(model, dpi=200, ax=ax1)
     except:
-        if _get_platform() != "windows":
-            print('[treeplot] >Install graphviz first: <sudo apt install python-pydot python-pydot-ng graphviz>')
+        pass
+        # if _get_platform() != "windows":
+            # print('[treeplot] >Install graphviz first: <sudo apt install python-pydot python-pydot-ng graphviz>')
 
     # Plot importance
     ax2 = None
@@ -151,8 +152,9 @@ def xgboost(model, featnames=None, num_trees=None, plottype='horizontal', figsiz
         fig, ax1 = plt.subplots(1, 1, figsize=figsize)
         plot_tree(model, num_trees=num_trees, rankdir=plottype, ax=ax1)
     except:
-        if _get_platform() != "windows":
-            print('[treeplot] >Install graphviz first: <sudo apt install python-pydot python-pydot-ng graphviz>')
+        pass
+        # if _get_platform() != "windows":
+            # print('[treeplot] >Install graphviz first: <sudo apt install python-pydot python-pydot-ng graphviz>')
 
     # Plot importance
     ax2 = None
@@ -247,8 +249,9 @@ def randomforest(model, featnames=None, num_trees=None, filepath='tree', export=
             plt.axis('off')
             plt.show()
         except:
-            if _get_platform() != "windows":
-                print('[treeplot] >Install graphviz first: <sudo apt install python-pydot python-pydot-ng graphviz>')
+            pass
+            # if _get_platform() != "windows":
+                # print('[treeplot] >Install graphviz first: <sudo apt install python-pydot python-pydot-ng graphviz>')
     else:
         graph = Source(dot_data)
         plt.show()
