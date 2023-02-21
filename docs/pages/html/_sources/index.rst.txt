@@ -3,8 +3,6 @@ treeplot's documentation!
 
 |python| |pypi| |docs| |stars| |LOC| |downloads_month| |downloads_total| |license| |forks| |open issues| |project status| |colab| |repo-size| |donate|
 
-.. include:: add_top.add
-
 
 .. |figd| image:: ../figs/fig_breast_randomforest.png
 
