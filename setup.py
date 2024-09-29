@@ -10,10 +10,10 @@ else:
     raise RuntimeError("Unable to find version string in %s." % (VERSIONFILE,))
 
 # Setup ------------
-with open("README.md", "r") as fh:
+with open("README.md", "r", encoding='utf8') as fh:
     long_description = fh.read()
 setuptools.setup(
-     install_requires=['sklearn','numpy','graphviz>=0.20.1','matplotlib','wget','funcsigs'],
+     install_requires=['scikit-learn','numpy','graphviz>=0.20.1','matplotlib','wget','funcsigs'],
      python_requires='>=3',
      name='treeplot',
      version=new_version,
