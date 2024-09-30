@@ -8,7 +8,7 @@ from treeplot.treeplot import (
 
 __author__ = 'Erdogan Tasksen'
 __email__ = 'erdogant@gmail.com'
-__version__ = '0.1.17'
+__version__ = '0.1.18'
 
 # module level doc-string
 __doc__ = """
