@@ -8,13 +8,12 @@
 # --------------------------------------------------
 
 # %% Libraries
-import os
-import sys
-import zipfile
+# import os
+# import sys
+# import zipfile
 import numpy as np
 from sklearn.tree import export_graphviz
-# from sklearn.tree.export import export_text
-from sklearn.tree import export_text
+# from sklearn.tree import export_text
 from subprocess import call
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
