@@ -8,20 +8,13 @@
 # --------------------------------------------------
 
 # %% Libraries
-# import os
-# import sys
-# import zipfile
 import numpy as np
 from sklearn.tree import export_graphviz
-# from sklearn.tree import export_text
 from subprocess import call
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 from graphviz import Source
 from setgraphviz import setgraphviz
-
-URL = 'https://erdogant.github.io/datasets/graphviz-2.38.zip'
-
 
 # %% Plot tree
 def plot(model, featnames=None, num_trees=None, plottype='horizontal', figsize=(25,25), verbose=3):
@@ -302,59 +295,6 @@ def import_example(data='random', n_samples=1000, n_feat=10):
     return X, y
 
 
-# %% Get graphiz path and include into local PATH
-# def _set_graphviz_path(verbose=3):
-#     finPath=''
-#     if _get_platform()=="windows":
-#         # Download from github
-#         [gfile, curpath] = _download_graphviz(URL, verbose=verbose)
-
-#         # curpath = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'RESOURCES')
-#         # filesindir = os.listdir(curpath)[0]
-#         idx = gfile[::-1].find('.') + 1
-#         dirname = gfile[:-idx]
-#         getPath = os.path.abspath(os.path.join(curpath, dirname))
-#         getZip = os.path.abspath(os.path.join(curpath, gfile))
-#         # Unzip if path does not exists
-#         if not os.path.isdir(getPath):
-#             if verbose>=3: print('[treeplot] >Extracting graphviz files..')
-#             [pathname, _] = os.path.split(getZip)
-#             # Unzip
-#             zip_ref = zipfile.ZipFile(getZip, 'r')
-#             zip_ref.extractall(pathname)
-#             zip_ref.close()
-#             getPath = os.path.join(pathname, dirname)
-
-#         # Point directly to the bin
-#         finPath = os.path.abspath(os.path.join(getPath, 'release', 'bin'))
-#     else:
-#         pass
-#         # sudo apt install python-pydot python-pydot-ng graphviz
-#         # dpkg -l | grep graphviz
-#         # call(['dpkg', '-l', 'grep', 'graphviz'])
-#         # call(['dpkg', '-s', 'graphviz'])
-
-#     # Add to system
-#     if finPath not in os.environ["PATH"]:
-#         if verbose>=3: print('[treeplot] >Set path in environment.')
-#         os.environ["PATH"] += os.pathsep + finPath
-
-#     return(finPath)
-
-
-# %%
-# def _get_platform():
-#     platforms = {
-#         'linux1':'linux',
-#         'linux2':'linux',
-#         'darwin':'osx',
-#         'win32':'windows'
-#     }
-#     if sys.platform not in platforms:
-#         return sys.platform
-#     return platforms[sys.platform]
-
-
 # %% Check input model
 def _check_model(model, expected):
     modelname = str(model).lower()
@@ -369,36 +309,3 @@ def _check_model(model, expected):
     if (expected=='lgb'):
         if ('lgb' not in modelname):
             print('[treeplot] >Warning: The input model seems not to be a lightgbm model?')
-
-# %% Import example dataset from github.
-# def _download_graphviz(url, verbose=3):
-#     """Import example dataset from github.
-
-#     Parameters
-#     ----------
-#     url : str, optional
-#         url-Link to graphviz. The default is 'https://erdogant.github.io/datasets/graphviz-2.38.zip'.
-#     verbose : int, optional
-#         Print message to screen. The default is 3.
-
-#     Returns
-#     -------
-#     tuple : (gfile, curpath).
-#         gfile : filename
-#         curpath : currentpath
-
-#     """
-#     curpath = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'RESOURCES')
-#     gfile = wget.filename_from_url(url)
-#     PATH_TO_DATA = os.path.join(curpath, gfile)
-#     if not os.path.isdir(curpath):
-#         if verbose>=3: print('[treeplot] >Downloading graphviz..')
-#         os.makedirs(curpath, exist_ok=True)
-
-#     # Check file exists.
-#     if not os.path.isfile(PATH_TO_DATA):
-#         # Download data from URL
-#         if verbose>=3: print('[treeplot] >Downloading graphviz..')
-#         wget.download(url, curpath)
-
-#     return(gfile, curpath)
