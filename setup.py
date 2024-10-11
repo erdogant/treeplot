@@ -13,7 +13,7 @@ else:
 with open("README.md", "r", encoding='utf8') as fh:
     long_description = fh.read()
 setuptools.setup(
-     install_requires=['scikit-learn','numpy','graphviz>=0.20.1','matplotlib', 'funcsigs'],
+     install_requires=['scikit-learn','numpy','graphviz>=0.20.1','matplotlib', 'funcsigs', 'setgraphviz'],
      python_requires='>=3',
      name='treeplot',
      version=new_version,
